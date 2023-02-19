@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  api:
+    restart: 'always'
+    build: 
+      context: api
+      target: builder
+    ports:
+      - 8000:8000
+    links:
+      - db:db
+    env_file:
+      - ./.env.dev
+    command: poetry run python manage.py runserver 0.0.0.0:8000
+
+  db:
+    restart: always
+    image: postgres:latest
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=ani_challenge
+      - POSTGRES_PASSWORD=ani_challenge
+      - POSTGRES_DB=ani_challenge
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+volumes:
+  api:
+  pgdata:
