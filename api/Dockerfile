@@ -17,6 +17,7 @@ RUN poetry install --no-interaction --no-ansi
 
 COPY . .
 
+RUN poetry run python manage.py migrate
 RUN poetry run black --check .
 RUN poetry run pylint **/*.py
 RUN poetry run coverage run -m --source=. pytest .
