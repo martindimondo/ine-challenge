@@ -1,6 +1,6 @@
 # Challenge INE
 
-## Installation
+## Installation
 
 In order to install, previously you need to install Docker.
 After you can run on the project root folder
