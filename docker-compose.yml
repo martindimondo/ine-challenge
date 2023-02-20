@@ -2,7 +2,7 @@ version: '3'
 
 services:
   api:
-    restart: 'always'
+    restart: always
     build: 
       context: api
       target: builder
